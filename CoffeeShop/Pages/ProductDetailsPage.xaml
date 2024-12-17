@@ -1,0 +1,55 @@
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="CoffeeShop.ProductDetailsPage"
+             BackgroundColor="#F0F0F0">
+
+    <Grid RowDefinitions="Auto,*,Auto">
+        <ScrollView Grid.Row="1">
+            <VerticalStackLayout Spacing="10" Padding="30">
+
+                <Image Source="{Binding ImageUrl}" Aspect="AspectFill" HeightRequest="400"/>
+                <Label Text="{Binding Denumire}" FontAttributes="Bold" FontSize="30"/>
+                <Label Text="{Binding Descriere}" FontSize="18"/>
+                <Label Text="Customize" FontAttributes="Bold" FontSize="22"/>
+
+                <StackLayout Orientation="Horizontal" Spacing="15">
+                    <Button x:Name="SizeSmall" Text="Small" Style="{StaticResource RoundButtonStyle}" Clicked="OnSizeClicked"/>
+                    <Button x:Name="SizeRegular" Text="Regular" Style="{StaticResource RoundButtonStyle}" Clicked="OnSizeClicked"/>
+                    <Button x:Name="SizeLarge" Text="Large" Style="{StaticResource RoundButtonStyle}" Clicked="OnSizeClicked"/>
+                </StackLayout>
+
+                <StackLayout Orientation="Horizontal" Spacing="15">
+                    <Button x:Name="SugarNormal" Text="Normal" Style="{StaticResource RoundButtonStyle}" Clicked="OnSugarClicked"/>
+                    <Button x:Name="SugarLess" Text="Less" Style="{StaticResource RoundButtonStyle}" Clicked="OnSugarClicked"/>
+                    <Button x:Name="SugarNo" Text="No" Style="{StaticResource RoundButtonStyle}" Clicked="OnSugarClicked"/>
+                </StackLayout>
+
+                <StackLayout Orientation="Horizontal" Spacing="15">
+                    <Button x:Name="IceNormal" Text="Normal" Style="{StaticResource RoundButtonStyle}" Clicked="OnIceClicked"/>
+                    <Button x:Name="IceLess" Text="Less" Style="{StaticResource RoundButtonStyle}" Clicked="OnIceClicked"/>
+                    <Button x:Name="IceNo" Text="No" Style="{StaticResource RoundButtonStyle}" Clicked="OnIceClicked"/>
+                </StackLayout>
+
+                <HorizontalStackLayout Spacing="10" HorizontalOptions="FillAndExpand">
+                    <Label Text="{Binding Pret, StringFormat='{0:F2}'}" FontSize="24" TextColor="DarkRed" HorizontalOptions="StartAndExpand" VerticalOptions="Center"/>
+                    <Button Text="Add to Order" FontSize="20" TextColor="White" BackgroundColor="#C68017" Margin="40,20,20,20" CornerRadius="10" HorizontalOptions="EndAndExpand" VerticalOptions="Center" WidthRequest="150" Clicked="OnAddToOrderClicked"/>
+                </HorizontalStackLayout>
+            </VerticalStackLayout>
+        </ScrollView>
+        
+        <Grid Grid.Row="2" Padding="10" BackgroundColor="White" VerticalOptions="End">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <ImageButton Source="home_icon.png" HeightRequest="24" WidthRequest="24" Grid.Column="0" Clicked="OnHomeClicked"/>
+            <ImageButton Source="favorites_icon.png" HeightRequest="24" WidthRequest="24" Grid.Column="1" Clicked="OnFavClicked"/>
+            <ImageButton Source="menu_icon.png" HeightRequest="24" WidthRequest="24" Grid.Column="2" Clicked="OnMenuClicked"/>
+            <ImageButton Source="cart_icon.png" HeightRequest="24" WidthRequest="24" Grid.Column="3" Clicked="OnCartClicked"/>
+            <ImageButton Source="profile_icon.png" HeightRequest="24" WidthRequest="24" Grid.Column="4" Clicked="OnProfileClicked"/>
+        </Grid>
+    </Grid>
+</ContentPage>

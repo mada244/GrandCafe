@@ -1,0 +1,32 @@
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="CoffeeShop.Pages.EditProductPage"
+             Title="EditProductPage">
+
+    <Grid RowDefinitions="Auto,*,Auto">
+        <ScrollView>
+            <VerticalStackLayout Spacing="25" Padding="30">
+                <Entry x:Name="nameEntry" Placeholder="Name" Text="{Binding Denumire}"/>
+                <Entry x:Name="descriptionEntry" Placeholder="Description" Text="{Binding Descriere}"/>
+                <Entry x:Name="priceEntry" Placeholder="Price" Text="{Binding Pret}" Keyboard="Numeric"/>
+                <Entry x:Name="categoryEntry" Placeholder="Category" Text="{Binding Category}"/>
+                <Button Text="Edit product" BackgroundColor="#C68017" Clicked="OnEditProductClicked"/>
+            </VerticalStackLayout>
+        </ScrollView>
+
+        <Grid Grid.Row="2" Padding="10" BackgroundColor="White" VerticalOptions="End">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <ImageButton Source="home_icon.png" HeightRequest="24" WidthRequest="24" Grid.Column="0" Clicked="OnHomeClicked"/>
+            <ImageButton Source="favorites_icon.png" HeightRequest="24" WidthRequest="24" Grid.Column="1" Clicked="OnFavClicked"/>
+            <ImageButton Source="menu_icon.png" HeightRequest="24" WidthRequest="24" Grid.Column="2" Clicked="OnMenuClicked"/>
+            <ImageButton Source="cart_icon.png" HeightRequest="24" WidthRequest="24" Grid.Column="3" Clicked="OnCartClicked"/>
+            <ImageButton Source="profile_icon.png" HeightRequest="24" WidthRequest="24" Grid.Column="4" Clicked="OnProfileClicked"/>
+        </Grid>
+    </Grid>
+</ContentPage>

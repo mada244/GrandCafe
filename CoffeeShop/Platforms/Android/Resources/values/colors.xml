@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+	<color name="DarkGray">#2B2E32</color>
+	<color name="LightGray">#8B8E8E</color>
+	<color name="Brown">#A85D2A</color>
+	<color name="Orange">#F98638</color>
+	<color name="BGGray">#1F2225</color>
+
+</resources>

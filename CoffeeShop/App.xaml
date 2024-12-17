@@ -1,0 +1,68 @@
+﻿<?xml version = "1.0" encoding = "UTF-8" ?>
+<Application xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:CoffeeShop"
+             x:Class="CoffeeShop.App">
+    <Application.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Resources/Styles/Colors.xaml" />
+                <ResourceDictionary Source="Resources/Styles/Styles.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+            <Style x:Key="RoundButtonStyle" TargetType="Button">
+                <Setter Property="BackgroundColor" Value="#C68017"/>
+                <Setter Property="TextColor" Value="White"/>
+                <Setter Property="CornerRadius" Value="20"/>
+                <Setter Property="FontAttributes" Value="Bold"/>
+                <Setter Property="HeightRequest" Value="50"/>
+                <Setter Property="WidthRequest" Value="90"/>
+            </Style>
+            <Color x:Key="PrimaryColor">#C68017</Color>
+            <Color x:Key="ButtonTextColor">White</Color>
+            <Color x:Key="FrameBackgroundColor">White</Color>
+            <Color x:Key="PageBackgroundColor">#F8F8F8</Color>
+
+            <Style x:Key="DefaultButtonStyle" TargetType="Button">
+                <Setter Property="BackgroundColor" Value="{StaticResource PrimaryColor}"/>
+                <Setter Property="TextColor" Value="{StaticResource ButtonTextColor}"/>
+                <Setter Property="CornerRadius" Value="10"/>
+                <Setter Property="FontSize" Value="16"/>
+                <Setter Property="HeightRequest" Value="44"/>
+                <Setter Property="WidthRequest" Value="88"/>
+            </Style>
+
+            <Style x:Key="QuantityButtonStyle" TargetType="Button">
+                <Setter Property="BackgroundColor" Value="Transparent"/>
+                <Setter Property="BorderWidth" Value="0"/>
+                <Setter Property="TextColor" Value="{StaticResource PrimaryColor}"/>
+                <Setter Property="FontSize" Value="18"/>
+                <Setter Property="HeightRequest" Value="44"/>
+                <Setter Property="WidthRequest" Value="44"/>
+            </Style>
+
+            <Style TargetType="Frame">
+                <Setter Property="CornerRadius" Value="15"/>
+                <Setter Property="BackgroundColor" Value="{StaticResource FrameBackgroundColor}"/>
+                <Setter Property="HasShadow" Value="True"/>
+                <Setter Property="Padding" Value="10"/>
+            </Style>
+
+            <ControlTemplate x:Key="BottomNavBarTemplate">
+                <Grid Padding="10" BackgroundColor="White" VerticalOptions="End">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <ImageButton Source="home_icon.png" HeightRequest="24" WidthRequest="24" Grid.Column="0"/>
+                    <ImageButton Source="favorites_icon.png" HeightRequest="24" WidthRequest="24" Grid.Column="1"/>
+                    <ImageButton Source="menu_icon.png" HeightRequest="24" WidthRequest="24" Grid.Column="2" />
+                    <ImageButton Source="cart_icon.png" HeightRequest="24" WidthRequest="24" Grid.Column="3"/>
+                    <ImageButton Source="profile_icon.png" HeightRequest="24" WidthRequest="24" Grid.Column="4" />
+                </Grid>
+            </ControlTemplate>
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>

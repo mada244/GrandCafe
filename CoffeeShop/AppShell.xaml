@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Shell x:Class="CoffeeShop.AppShell"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:CoffeeShop"
+    xmlns:pages="clr-namespace:CoffeeShop.Pages"
+    Shell.FlyoutBehavior="Flyout"
+    Title="CoffeeShop"
+        BackgroundColor="Black"
+    ForegroundColor="White"
+    TitleColor="Black">
+
+    <Shell.Resources>
+        <ResourceDictionary>
+            <DataTemplate x:Key="FlyoutItemTemplate">
+                <Grid Padding="15,10">
+                    <Label Text="{Binding Title}"
+                        FontSize="16"
+                        TextColor="Black"
+                        VerticalOptions="Center"/>
+                </Grid>
+            </DataTemplate>
+        </ResourceDictionary>
+    </Shell.Resources>
+
+
+        <ShellContent
+        Title="Home" Icon="home_icon.png"
+        ContentTemplate="{DataTemplate local:MainPage}" />
+        <ShellContent Title="Favorites" Icon="favorites_icon.png" ContentTemplate="{DataTemplate pages:FavoritesPage}" />
+        <!--<ShellContent Title="Payment Methods" Icon="payment_icon.png" ContentTemplate="{DataTemplate pages:PaymentMethodPage}" />-->
+        <!--<ShellContent Title="Terms and Conditions" Icon="terms_icon.png" ContentTemplate="{DataTemplate pages:TermsCondPage}" />
+        <FlyoutItem Title="Settings" Icon="settings_icon.png">
+            <ShellContent ContentTemplate="{DataTemplate pages:SettingsPage}" />
+        </FlyoutItem>-->
+    <MenuFlyoutItem Text="Logout" Clicked="LogoutClicked"  IconImageSource="logout_icon.png">
+    </MenuFlyoutItem>
+</Shell>

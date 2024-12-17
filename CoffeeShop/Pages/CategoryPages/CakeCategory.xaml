@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="CoffeeShop.Pages.CategoryPages.CakeCategory"
+             Title="CakeCategory"
+             BackgroundColor="#F0F0F0">
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="{Binding Username, StringFormat='Hi, {0}'}"
+                  IconImageSource="notification_icon1.png"/>
+    </ContentPage.ToolbarItems>
+
+    <Grid RowDefinitions="Auto, *, Auto">
+        <StackLayout Grid.Row="0" BackgroundColor="Black" Padding="10">
+            <Border StrokeThickness="1"
+                    StrokeShape="RoundRectangle 10,10,10,10"
+                    Padding="2,8"
+                    HorizontalOptions="FillAndExpand"
+                    Margin="10,5,10,5"
+                    BackgroundColor="White">
+                <SearchBar Placeholder="Search"
+                           PlaceholderColor="Black"
+                           HeightRequest="40"
+                           FontSize="16"
+                           HorizontalOptions="FillAndExpand"
+                           TextChanged="OnTextChanged"/>
+            </Border>
+        </StackLayout>
+
+        <ScrollView Grid.Row="1">
+            <CollectionView ItemsSource="{Binding Products}" Margin="10"
+                    VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+                <CollectionView.ItemsLayout>
+                    <GridItemsLayout Orientation="Vertical" Span="2" HorizontalItemSpacing="10" VerticalItemSpacing="10"/>
+                </CollectionView.ItemsLayout>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Frame CornerRadius="15" Margin="5" Padding="0" BorderColor="LightGray">
+                            <Grid Padding="10">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="Auto" />
+
+                                </Grid.ColumnDefinitions>
+                                <Image Source="{Binding ImageUrl}" Aspect="AspectFill" HeightRequest="150" Grid.ColumnSpan="3"/>
+                                <ImageButton Source="favorites_icon.png" 
+                                             BackgroundColor="#00000000" 
+                                             WidthRequest="20" 
+                                             HeightRequest="20" 
+                                             HorizontalOptions="End" 
+                                             VerticalOptions="Start" 
+                                             Margin="0,10,2,0" 
+                                             Grid.Column="1"
+                                             Command="{Binding Path=BindingContext.AddToFavoriteCommand, Source={RelativeSource AncestorType={x:Type ContentPage}}}" 
+                                             CommandParameter="{Binding .}"
+                                             Grid.ColumnSpan="3"/>
+
+                                <!--<ImageButton Source="seevert_icon.png" BackgroundColor="#00000000" 
+     WidthRequest="20" HeightRequest="20" 
+     HorizontalOptions="End" VerticalOptions="Start" 
+     Margin="2,10,0,0" Grid.Column="2"/>-->
+
+                                <Label Text="{Binding Denumire}" FontSize="18" FontAttributes="Bold" TextColor="Black" 
+                               Grid.Row="1" Grid.Column="0" HorizontalOptions="Start"/>
+                                <Label Text="{Binding Pret, StringFormat='{0:F2}'}" FontSize="16" TextColor="DarkRed" 
+                               Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3" HorizontalOptions="End"/>
+                                <ImageButton Source="cart_icon.png" BackgroundColor="#00000000" 
+             Command="{Binding Path=BindingContext.AddToCartCommand, Source={RelativeSource AncestorType={x:Type ContentPage}}}" 
+             CommandParameter="{Binding .}"
+             WidthRequest="24" HeightRequest="24" 
+             Margin="0,0,10,0" Grid.Row="1" Grid.Column="2" HorizontalOptions="End"/>
+                                <Grid.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="OnProductTapped" NumberOfTapsRequired="1"/>
+                                </Grid.GestureRecognizers>
+
+                            </Grid>
+                        </Frame>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </ScrollView>
+
+        <Grid Grid.Row="2" Padding="10" BackgroundColor="White" VerticalOptions="End">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <ImageButton Source="home_icon.png" HeightRequest="24" WidthRequest="24" Grid.Column="0" Clicked="OnHomeClicked"/>
+            <ImageButton Source="favorites_icon.png" HeightRequest="24" WidthRequest="24" Grid.Column="1" Clicked="OnFavClicked"/>
+            <ImageButton Source="menu_icon.png" HeightRequest="24" WidthRequest="24" Grid.Column="2" Clicked="OnMenuClicked"/>
+            <ImageButton Source="cart_icon.png" HeightRequest="24" WidthRequest="24" Grid.Column="3" Clicked="OnCartClicked"/>
+            <ImageButton Source="profile_icon.png" HeightRequest="24" WidthRequest="24" Grid.Column="4" Clicked="OnProfileClicked"/>
+        </Grid>
+    </Grid>
+</ContentPage>

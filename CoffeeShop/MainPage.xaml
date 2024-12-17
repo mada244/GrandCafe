@@ -1,0 +1,207 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="CoffeeShop.MainPage"
+             BackgroundColor="#F0F0F0">
+
+    <Shell.TitleView>
+        <StackLayout BackgroundColor="Black" Padding="10">
+            <Grid ColumnDefinitions="*,Auto">
+                <StackLayout Orientation="Horizontal" VerticalOptions="Center">
+                    <Label Text="Welcome!" TextColor="White" FontSize="Large" VerticalOptions="Center" />
+                </StackLayout>
+                <StackLayout Orientation="Horizontal" Grid.Column="1">
+                    <Label Text="{Binding Username, StringFormat='Hi, {0}'}" TextColor="White" VerticalOptions="Center" />
+                    <Image Source="notification_icon1.png" HeightRequest="24" WidthRequest="24" Margin="10,0" />
+                </StackLayout>
+            </Grid>
+        </StackLayout>
+    </Shell.TitleView>
+    <Grid RowDefinitions="Auto,*,Auto">
+
+        <StackLayout BackgroundColor="Black" Padding="10" Grid.Row="0">
+
+            <Border StrokeThickness="1"
+        StrokeShape="RoundRectangle 10,10,10,10"
+        Padding="2,8"
+        HorizontalOptions="FillAndExpand"
+        Margin="10,5,10,5"
+        BackgroundColor="White">
+                <SearchBar Placeholder="Search"
+                           PlaceholderColor="Black"
+                           HeightRequest="40"
+                           FontSize="16"
+                           HorizontalOptions="FillAndExpand" 
+                           TextChanged="OnTextChanged"/>
+            </Border>
+        </StackLayout>
+
+        <ScrollView Grid.Row="1">
+            <StackLayout>
+                <Frame CornerRadius="10" Margin="10" Padding="0" IsClippedToBounds="True">
+                    <Grid>
+                        <Image Source="coffee_banner.png" Aspect="AspectFill" />
+                        <StackLayout Padding="10" VerticalOptions="Center">
+                            <Label Text="Get 20% OFF" TextColor="White" FontSize="Large" />
+                            <Label Text="It's a great day for coffee" TextColor="White" />
+                            <Button Text="Get Discount" BackgroundColor="White" TextColor="Black" CornerRadius="20" WidthRequest="150" Margin="0,10,0,0" />
+                        </StackLayout>
+                    </Grid>
+                </Frame>
+                <StackLayout IsVisible="{Binding IsSearchEmpty}">
+                    <StackLayout Margin="10">
+                        <Label Text="Category" FontSize="Medium" TextColor="Black" />
+                        <ScrollView Orientation="Horizontal">
+                            <StackLayout Orientation="Horizontal" Spacing="30">
+                                <StackLayout>
+                                    <ImageButton Source="coffee_icon1.png" HeightRequest="50" WidthRequest="50" VerticalOptions="Center" HorizontalOptions="Center" Clicked="OnCoffeeClicked" />
+                                    <Label Text="Coffee" HorizontalOptions="Center" TextColor="Black" />
+                                </StackLayout>
+                                <StackLayout>
+                                    <ImageButton Source="drink_icon.png" HeightRequest="50" WidthRequest="50" VerticalOptions="Center" HorizontalOptions="Center" Clicked="OnDrinkClicked" />
+                                    <Label Text="Drink" HorizontalOptions="Center" TextColor="Black" />
+                                </StackLayout>
+                                <StackLayout>
+                                    <ImageButton Source="juice_icon.png" HeightRequest="50" WidthRequest="50" VerticalOptions="Center" HorizontalOptions="Center" Clicked="OnJuiceClicked"/>
+                                    <Label Text="Juice" HorizontalOptions="Center" TextColor="Black" />
+                                </StackLayout>
+                                <StackLayout>
+                                    <ImageButton Source="cake_icon.png" HeightRequest="50" WidthRequest="50" VerticalOptions="Center" HorizontalOptions="Center" Clicked="OnCakeClicked"/>
+                                    <Label Text="Cake" HorizontalOptions="Center" TextColor="Black" />
+                                </StackLayout>
+                            </StackLayout>
+                        </ScrollView>
+                    </StackLayout>
+
+
+                    <StackLayout Margin="10">
+                        <Grid>
+                            <Label Text="All products" FontSize="Medium" TextColor="Black" VerticalOptions="Center" />
+                            <Button Text="View all" BackgroundColor="Transparent" TextColor="#C68017" HorizontalOptions="End" VerticalOptions="Center" Clicked="ViewAllProducts"/>
+                        </Grid>
+                        <ScrollView Orientation="Horizontal">
+                            <StackLayout Orientation="Horizontal" BindableLayout.ItemsSource="{Binding LimitedProducts}">
+                                <BindableLayout.ItemTemplate>
+                                    <DataTemplate>
+                                        <Frame CornerRadius="10" WidthRequest="150" Margin="5" BackgroundColor="#2C2C2E">
+                                            <StackLayout>
+                                                <Image Source="{Binding ImageUrl}" Aspect="AspectFill" HeightRequest="100" />
+                                                <Label Text="{Binding Denumire}" HorizontalOptions="Center" TextColor="White" />
+                                            </StackLayout>
+                                            <Frame.GestureRecognizers>
+                                                <TapGestureRecognizer Tapped="OnProductTapped" NumberOfTapsRequired="1"/>
+                                            </Frame.GestureRecognizers>
+                                        </Frame>
+                                    </DataTemplate>
+                                </BindableLayout.ItemTemplate>
+                            </StackLayout>
+                        </ScrollView>
+                    </StackLayout>
+
+                    <StackLayout Margin="10">
+                        <Grid>
+                            <Label Text="Recent added" FontSize="Medium" TextColor="Black" VerticalOptions="Center" />
+                            <Button Text="View all" 
+                BackgroundColor="Transparent" 
+                TextColor="#C68017" 
+                HorizontalOptions="End" 
+                VerticalOptions="Center" 
+                Clicked="ViewRecentAdded" />
+                        </Grid>
+                        <ScrollView Orientation="Horizontal">
+                            <StackLayout Orientation="Horizontal" BindableLayout.ItemsSource="{Binding RecentProducts}">
+                                <BindableLayout.ItemTemplate>
+                                    <DataTemplate>
+                                        <Frame CornerRadius="10" WidthRequest="150" Margin="5" BackgroundColor="#2C2C2E">
+                                            <StackLayout>
+                                                <Image Source="{Binding ImageUrl}" Aspect="AspectFill" HeightRequest="100" />
+                                                <Label Text="{Binding Denumire}" HorizontalOptions="Center" TextColor="White" />
+                                            </StackLayout>
+                                            <Frame.GestureRecognizers>
+                                                <TapGestureRecognizer Tapped="OnProductTapped" NumberOfTapsRequired="1"/>
+                                            </Frame.GestureRecognizers>
+                                        </Frame>
+                                    </DataTemplate>
+                                </BindableLayout.ItemTemplate>
+                            </StackLayout>
+                        </ScrollView>
+                    </StackLayout>
+                </StackLayout>
+
+                <StackLayout IsVisible="{Binding IsNotSearchEmpty}">
+                    <ScrollView Grid.Row="1">
+                        <VerticalStackLayout Margin="10">
+                            <CollectionView ItemsSource="{Binding Products}" Margin="10"
+                                VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+                                <CollectionView.ItemsLayout>
+                                    <GridItemsLayout Orientation="Vertical" Span="2" HorizontalItemSpacing="10" VerticalItemSpacing="10"/>
+                                </CollectionView.ItemsLayout>
+                                <CollectionView.ItemTemplate>
+                                    <DataTemplate>
+                                        <Frame CornerRadius="15" Margin="5" Padding="0" BorderColor="LightGray">
+                                            <Grid Padding="10">
+                                                <Grid.RowDefinitions>
+                                                    <RowDefinition Height="Auto" />
+                                                    <RowDefinition Height="Auto" />
+                                                    <RowDefinition Height="Auto" />
+                                                </Grid.RowDefinitions>
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="*" />
+                                                    <ColumnDefinition Width="Auto" />
+                                                    <ColumnDefinition Width="Auto" />
+                                                </Grid.ColumnDefinitions>
+                                                <Image Source="{Binding ImageUrl}" Aspect="AspectFill" HeightRequest="150" Grid.ColumnSpan="3"/>
+                                                <ImageButton Source="favorites_icon.png" BackgroundColor="#00000000" 
+                                                 WidthRequest="20" HeightRequest="20" 
+                                                 HorizontalOptions="End" VerticalOptions="Start" 
+                                                 Margin="0,10,2,0" Grid.Column="1" 
+                                                 Command="{Binding Path=BindingContext.AddToFavoriteCommand, Source={RelativeSource AncestorType={x:Type ContentPage}}}" 
+                                                 CommandParameter="{Binding .}"
+                                                 />
+
+                                                <!--<ImageButton Source="seevert_icon.png" BackgroundColor="#00000000" 
+                                                 WidthRequest="20" HeightRequest="20" 
+                                                 HorizontalOptions="End" VerticalOptions="Start" 
+                                                 Margin="2,10,0,0" Grid.Column="2"/>-->
+
+                                                <Label Text="{Binding Denumire}" FontSize="18" FontAttributes="Bold" TextColor="Black" 
+                                           Grid.Row="1" Grid.Column="0" HorizontalOptions="Start"/>
+                                                <Label Text="{Binding Pret, StringFormat='{0:F2}'}" FontSize="16" TextColor="DarkRed" 
+                                           Grid.Row="1" Grid.Column="1" HorizontalOptions="Start"/>
+
+                                                <ImageButton Source="cart_icon.png" BackgroundColor="#00000000" 
+                                                 Command="{Binding Path=BindingContext.AddToCartCommand, Source={RelativeSource AncestorType={x:Type ContentPage}}}" 
+                                                 CommandParameter="{Binding .}"
+                                                 WidthRequest="24" HeightRequest="24" 
+                                                 Margin="0,0,10,0" Grid.Row="1" Grid.Column="2" HorizontalOptions="End"/>
+                                                <Grid.GestureRecognizers>
+                                                    <TapGestureRecognizer Tapped="OnProductTapped" NumberOfTapsRequired="1"/>
+                                                </Grid.GestureRecognizers>
+                                            </Grid>
+                                        </Frame>
+                                    </DataTemplate>
+                                </CollectionView.ItemTemplate>
+                            </CollectionView>
+                        </VerticalStackLayout>
+                    </ScrollView>
+                </StackLayout>
+
+            </StackLayout>
+        </ScrollView>
+        <Grid Padding="10" BackgroundColor="White" VerticalOptions="End" Grid.Row="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <ImageButton Source="home_icon.png" HeightRequest="24" WidthRequest="24" Grid.Column="0" Clicked="OnHomeClicked"/>
+            <ImageButton Source="favorites_icon.png" HeightRequest="24" WidthRequest="24" Grid.Column="1" Clicked="OnFavClicked"/>
+            <ImageButton Source="menu_icon.png" HeightRequest="24" WidthRequest="24" Grid.Column="2" Clicked="OnMenuClicked"/>
+            <ImageButton Source="cart_icon.png" HeightRequest="24" WidthRequest="24" Grid.Column="3" Clicked="OnCartClicked"/>
+            <ImageButton Source="profile_icon.png" HeightRequest="24" WidthRequest="24" Grid.Column="4" Clicked="OnProfileClicked"/>
+        </Grid>
+    </Grid>
+
+</ContentPage>

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="CoffeeShop.Pages.EditProfilePage"
+             Title="EditProfilePage">
+
+    <Grid RowDefinitions="Auto,*,Auto">
+        <ScrollView>
+        <StackLayout Padding="20">
+            <Entry Placeholder="Username" Text="{Binding Username}"/>
+            <Entry Placeholder="Email" Text="{Binding Email}"/>
+            <Entry Placeholder="Password" Text="{Binding Password, Mode=TwoWay}" IsPassword="True"/>
+            <Button Text="Save changes" BackgroundColor="#C68017" Clicked="OnEditUserClicked" Margin="0,30,0,0"/>
+        </StackLayout>
+    </ScrollView>
+        
+        <Grid Grid.Row="2" Padding="10" BackgroundColor="White" VerticalOptions="End">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <ImageButton Source="home_icon.png" HeightRequest="24" WidthRequest="24" Grid.Column="0" Clicked="OnHomeClicked"/>
+            <ImageButton Source="favorites_icon.png" HeightRequest="24" WidthRequest="24" Grid.Column="1" Clicked="OnFavClicked"/>
+            <ImageButton Source="menu_icon.png" HeightRequest="24" WidthRequest="24" Grid.Column="2" Clicked="OnMenuClicked"/>
+            <ImageButton Source="cart_icon.png" HeightRequest="24" WidthRequest="24" Grid.Column="3" Clicked="OnCartClicked"/>
+            <ImageButton Source="profile_icon.png" HeightRequest="24" WidthRequest="24" Grid.Column="4" Clicked="OnProfileClicked"/>
+        </Grid>
+    </Grid>
+</ContentPage>

@@ -1,0 +1,103 @@
+# Ignore build output directories
+bin/
+obj/
+
+# Ignore user-specific files
+*.user
+*.rsuser
+*.suo
+*.userosscache
+*.sln.docstates
+
+# Ignore project lock files
+project.lock.json
+project.fragment.lock.json
+artifacts/
+
+# Ignore OS-generated files
+.DS_Store
+*.DS_Store
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+*.cab
+*.msi
+*.msm
+*.msp
+*.lnk
+
+# Ignore Rider files
+.idea/
+*.sln.iml
+
+# Ignore VS Code files
+.vscode/
+
+# Ignore local history directory
+.localhistory/
+
+# Ignore .NET Core build results
+**/bin/
+**/obj/
+
+# Ignore .NET user-specific files
+**/*.rsuser
+**/*.suo
+**/*.user
+**/*.userosscache
+**/*.sln.docstates
+
+# Ignore NuGet packages
+*.nupkg
+*.snupkg
+packages/
+.nuget/
+
+# Ignore npm packages in MAUI app (if any)
+node_modules/
+
+# Ignore log files
+*.log
+
+# Ignore IDE directories and settings
+.idea/
+.vscode/
+.vscode-test/
+
+# Ignore npm debug file
+npm-debug.log
+
+# Ignore yarn lock file
+yarn.lock
+
+# Ignore application insights
+ApplicationInsights.config
+ApplicationInsights.config.install.xdt
+
+# Ignore MAUI specific files
+#platforms/
+*.db
+*.db-shm
+*.db-wal
+sqlite3.dll
+*.sqlite3
+
+# Ignore .NET Core generated files
+project.lock.json
+project.fragment.lock.json
+
+# Ignore coverage tool results
+coverage/
+*.coverage
+*.coveragexml
+*.cov
+
+# Ignore testing frameworks results
+TestResults/
+*.trx
+*.testresult
+*.Tests.*
+
+# Ignore code analysis results
+*.analysislogs

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="CoffeeShop.WelcomePage"
+             BackgroundColor="Black">
+
+    <StackLayout VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand">
+        <Image Source="logo.png" HeightRequest="300" />
+        <Label Text="Welcome to Grand Caffe!"
+               FontSize="32"
+               TextColor="White"
+               HorizontalOptions="Center" 
+               FontAttributes="Bold"
+               Margin="0,20,0,0"/>
+        <Label Text="Order your coffee from the best in town"
+               FontSize="18"
+               TextColor="White"
+               HorizontalOptions="Center"
+               Margin="0,10,0,0" />
+        <Button Text="Get Started"
+                BackgroundColor="#C68017"
+                TextColor="White"
+                HorizontalOptions="Center"
+                FontSize="18"
+                WidthRequest="250"
+                HeightRequest="60"
+                Clicked="OnGetStartedClicked"
+                Margin="0,20,0,0" />
+    </StackLayout>
+</ContentPage>

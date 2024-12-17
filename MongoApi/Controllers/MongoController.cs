@@ -12,7 +12,7 @@ namespace MongoApi.Controllers
 
         public MongoController(string collectionName)
         {
-            const string connectionUri = "mongodb+srv://madaciumac:loMI8Qu7WjARKcf2@grandcaffe.msc3lmg.mongodb.net/GrandCaffe?retryWrites=true&w=majority&appName=GrandCaffe";
+            const string connectionUri = "mongodb+srv://.../GrandCaffe?retryWrites=true&w=majority&appName=GrandCaffe";
             var settings = MongoClientSettings.FromConnectionString(connectionUri);
             settings.ServerApi = new ServerApi(ServerApiVersion.V1);
             var client = new MongoClient(settings);
